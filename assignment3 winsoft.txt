@@ -1,0 +1,26 @@
+3) 
+import java.io.*;
+import java.util.HashMap;
+import java.util.Map;
+class Assignment3 {
+    public static void main(String[] args)
+    {
+ 
+        String S1 = "Volleyball is a beautiful sport and it is the sport of the team work";
+ 
+        Map<String, Integer> hashMap = new HashMap<>();
+ 
+        String[] words = S1.split(" ");
+ 
+        for (String word : words) {
+            
+            if (hashMap.containsKey(word))
+                hashMap.put(word, hashMap.get(word) + 1);
+ 
+            else
+                hashMap.put(word, 1);
+        }
+ 
+        System.out.println(hashMap);
+    }
+}

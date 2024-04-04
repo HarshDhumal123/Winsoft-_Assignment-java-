@@ -1,0 +1,50 @@
+2)
+public class Assignment2 {
+    public static int maxSumPath(int[] array1, int[] array2) {
+        int m = array1.length;
+        int n = array2.length;
+
+        int a = 0, b = 0;
+        int result = 0, sum1 = 0, sum2 = 0;
+
+        while (a < m && b < n) {
+            if (array1[a] < array2[b]) {
+                sum1 += array1[a];
+                a++;
+            } else if (array1[a] > array2[b]) {
+                sum2 += array2[b];
+                b++;
+            } else {
+                result += Math.max(sum1, sum2) + array1[a];
+                sum1 = 0;
+                sum2 = 0;
+
+                while (a < m && b < n && array1[a] == array2[b]) {
+                    result += array1[a];
+                    a++;
+                    b++;
+                }
+            }
+        }
+
+        while (a < m) {
+            sum1 += array1[a];
+            a++;
+        }
+
+        while (b < n) {
+            sum2 += array2[b];
+            b++;
+        }
+
+        result += Math.max(sum1, sum2);
+
+        return result;
+    }
+
+    public static void main(String[] args) {
+        int[] array1 = {2, 3, 7,11, 13, 15};
+        int[] array2 = {1, 5, 7, 8,11};
+        System.out.println("Maximum sum path: " + maxSumPath(array1, array2)); // Output: 35
+    }
+}
